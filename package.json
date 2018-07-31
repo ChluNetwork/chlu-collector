@@ -8,7 +8,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/bin.js",
-    "test": "mocha --opts tests/mocha.opts"
+    "test": "mocha tests/**/*.test.js"
   },
   "bin": {
     "chlu-service-node": "src/bin.js"

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-const ChluIPFS = require('../src/index.js');
-const ServiceNode = require('../src/modules/servicenode')
+const ChluIPFS = require('chlu-ipfs-support');
+const ServiceNode = require('./servicenode')
 const cli = require('commander');
 const package = require('../package.json');
-const { startRendezvousServer } = require('../src/utils/rendezvous');
+const { startRendezvousServer } = require('./rendezvous');
 
 let chluIpfs = null, rendezvous = null;
 

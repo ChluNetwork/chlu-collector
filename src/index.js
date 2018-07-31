@@ -1,4 +1,3 @@
-const constants = require('../constants');
 const { isEmpty } = require('lodash')
 
 class ServiceNode {
@@ -26,15 +25,15 @@ class ServiceNode {
         }
         this.pinner = async multihash => {
             try {
-                this.chluIpfs.pinning.pin(multihash);
+                this.chluIpfs.pin(multihash);
             } catch (error) {
                 this.chluIpfs.logger.error('Service Node Pinning failed due to Error: ' + error.message);
             }
         };
         this.replicatedNotifier = async address => {
             try {
-                await this.chluIpfs.room.broadcast({
-                    type: constants.eventTypes.replicated,
+                await this.chluIpfs.broadcast({
+                    type: this.chluIpfs.constants.eventTypes.replicated,
                     address
                 });
                 this.chluIpfs.logger.info('Database replicated');
@@ -44,8 +43,8 @@ class ServiceNode {
         };
         this.replicatingNotifier = async address => {
             try {
-                await this.chluIpfs.room.broadcast({
-                    type: constants.eventTypes.replicating,
+                await this.chluIpfs.broadcast({
+                    type: this.chluIpfs.constants.eventTypes.replicating,
                     address
                 });
             } catch (error) {
@@ -67,6 +66,7 @@ class ServiceNode {
 
     async stop() {
         if (this.handler) {
+            // Stop listening for messages
             this.chluIpfs.events.removeListener('pubsub/message', this.handler);
             this.handler = undefined;
         }
@@ -75,11 +75,12 @@ class ServiceNode {
     async handleMessage(message) {
         let obj = message;
         // handle ReviewRecord: pin hash
-        if (obj.type === constants.eventTypes.wroteReviewRecord && typeof obj.multihash === 'string') {
+        if (obj.type === this.chluIpfs.eventTypes.wroteReviewRecord && typeof obj.multihash === 'string') {
             this.chluIpfs.logger.info('Reading and Pinning ReviewRecord ' + obj.multihash);
             try {
                 // Read review record first. This caches the content, the history, and throws if it's not valid
                 this.chluIpfs.logger.debug('Reading and validating ReviewRecord ' + obj.multihash);
+                // TODO: this network checking logic should be moved somewhere else
                 if(!isEmpty(obj.bitcoinNetwork) && obj.bitcoinNetwork !== this.chluIpfs.bitcoin.getNetwork()) {
                     throw new Error(
                         'Review Record ' + obj.multihash + ' with txId ' + obj.bitcoinTransactionHash
@@ -91,7 +92,7 @@ class ServiceNode {
                     bitcoinTransactionHash: obj.bitcoinTransactionHash
                 });
                 this.chluIpfs.logger.debug('Pinning validated ReviewRecord ' + obj.multihash);
-                await this.chluIpfs.pinning.pin(obj.multihash);
+                await this.chluIpfs.pin(obj.multihash);
                 this.chluIpfs.logger.info('Validated and Pinned ReviewRecord ' + obj.multihash);
             } catch(exception){
                 this.chluIpfs.logger.error('Pinning failed due to Error: ' + exception.message);
