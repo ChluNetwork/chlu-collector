@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const path = require('path')
 const ChluIPFS = require('chlu-ipfs-support');
 const ChluCollector = require('./')
 const cli = require('commander');
@@ -24,7 +25,7 @@ async function start(options){
     }
     const config = {
         network: options.network || ChluIPFS.networks.experimental,
-        directory: options.directory,
+        directory: options.directory || path.join(process.env.HOME, '.chlu-collector'),
         ipfs: {
             remote: options.externalIpfs
         },
@@ -78,7 +79,7 @@ cli
     .description('run the Service Node')
     // Chlu specific options
     .option('-n, --network <network>', 'use a custom network instead of experimental')
-    .option('-d, --directory <path>', 'where to store chlu data, defaults to ~/.chlu')
+    .option('-d, --directory <path>', 'where to store chlu data, defaults to ~/.chlu-collector')
     .option('--offline', 'signal other Chlu apps on your machine to ONLY connect to this service node and work offline')
     .option('--bootstrap', 'connect to Chlu bootstrap nodes (not recommended right now)')
     // Blockchain
