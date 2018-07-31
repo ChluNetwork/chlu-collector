@@ -1,12 +1,12 @@
 const { isEmpty } = require('lodash')
 
-class ServiceNode {
+class ChluCollector {
     constructor(chluIpfs) {
         this.chluIpfs = chluIpfs;
     }
 
     async start() {
-        this.chluIpfs.logger.debug('Starting Service Node')
+        this.chluIpfs.logger.debug('Starting Chlu Collector')
         const self = this;
         this.handler = message => {
             return self.handleMessage(message);
@@ -61,21 +61,23 @@ class ServiceNode {
         this.chluIpfs.events.on('discover/keys/vendor-marketplace', this.pinner);
         // Send messages on replication
         this.chluIpfs.events.on('db/replicated', this.replicatedNotifier);
-        this.chluIpfs.logger.debug('Started Service Node')
+        this.chluIpfs.logger.debug('Started Chlu Collector')
     }
 
     async stop() {
+        this.chluIpfs.logger.debug('Stopping Chlu Collector')
         if (this.handler) {
             // Stop listening for messages
             this.chluIpfs.events.removeListener('pubsub/message', this.handler);
             this.handler = undefined;
         }
+        this.chluIpfs.logger.debug('Stopped Chlu Collector')
     }
 
     async handleMessage(message) {
         let obj = message;
         // handle ReviewRecord: pin hash
-        if (obj.type === this.chluIpfs.eventTypes.wroteReviewRecord && typeof obj.multihash === 'string') {
+        if (obj.type === this.chluIpfs.constants.eventTypes.wroteReviewRecord && typeof obj.multihash === 'string') {
             this.chluIpfs.logger.info('Reading and Pinning ReviewRecord ' + obj.multihash);
             try {
                 // Read review record first. This caches the content, the history, and throws if it's not valid
@@ -101,4 +103,4 @@ class ServiceNode {
     }
 }
 
-module.exports = ServiceNode;
+module.exports = ChluCollector;
