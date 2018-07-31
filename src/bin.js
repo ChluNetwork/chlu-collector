@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const ChluIPFS = require('chlu-ipfs-support');
-const ServiceNode = require('./servicenode')
+const ChluCollector = require('./')
 const cli = require('commander');
 const package = require('../package.json');
 const { startRendezvousServer } = require('./rendezvous');
@@ -41,17 +41,17 @@ async function start(options){
         rendezvous = await startRendezvousServer(ChluIPFS.rendezvousPorts.local);
     }
     chluIpfs = new ChluIPFS(config);
-    chluIpfs.serviceNode = new ServiceNode(chluIpfs)
+    chluIpfs.collector = new ChluCollector(chluIpfs)
     await chluIpfs.start();
-    await chluIpfs.serviceNode.start()
+    await chluIpfs.collector.start()
 }
 
 process.on('SIGINT', async function() {
     try {
         console.log('Stopping gracefully');
         if (chluIpfs) {
-            if (chluIpfs.serviceNode) {
-                await chluIpfs.serviceNode.stop()
+            if (chluIpfs.collector) {
+                await chluIpfs.collector.stop()
             }
             await chluIpfs.stop();
         }
