@@ -762,8 +762,8 @@ buffer-fill@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-fill/-/buffer-fill-1.0.0.tgz#f8f78b76789888ef39f205cd637f68e702122b2c"
 
 buffer-from@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.0.tgz#87fcaa3a298358e0ade6e442cfce840740d1ad04"
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
 
 buffer-indexof@~0.0.0:
   version "0.0.2"
@@ -925,7 +925,7 @@ chlu-did@ChluNetwork/chlu-did:
 
 chlu-ipfs-support@ChluNetwork/chlu-ipfs-support#misc-features:
   version "0.2.0"
-  resolved "https://codeload.github.com/ChluNetwork/chlu-ipfs-support/tar.gz/da1eebe9f49c851583aa5747ccd5a2a0b49b958b"
+  resolved "https://codeload.github.com/ChluNetwork/chlu-ipfs-support/tar.gz/f55dbbffedef08ad835f9207e88062c494a0b99b"
   dependencies:
     axios "^0.18.0"
     blockcypher ChluNetwork/node-client
@@ -937,7 +937,6 @@ chlu-ipfs-support@ChluNetwork/chlu-ipfs-support#misc-features:
     elliptic "^6.4.0"
     ipfs "~0.28.2"
     ipfs-api "^20.0.0"
-    libp2p-websocket-star-rendezvous "^0.2.3"
     lodash "^4.17.5"
     lru-cache "^4.1.2"
     moment "^2.22.2"
@@ -4270,8 +4269,8 @@ lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
 logplease@^1.2.14, logplease@~1.2.14:
-  version "1.2.14"
-  resolved "https://registry.yarnpkg.com/logplease/-/logplease-1.2.14.tgz#e509dd4c455c1aed7dd105a17694daa5b9ac579f"
+  version "1.2.15"
+  resolved "https://registry.yarnpkg.com/logplease/-/logplease-1.2.15.tgz#3da442e93751a5992cc19010a826b08d0293c48a"
 
 lolex@^2.2.0, lolex@^2.3.2:
   version "2.7.1"
@@ -4730,8 +4729,8 @@ nise@^1.2.0:
     text-encoding "^0.6.4"
 
 nock@^9.0.18:
-  version "9.4.3"
-  resolved "https://registry.yarnpkg.com/nock/-/nock-9.4.3.tgz#26bbc1280898f442c9814085f05199cab857a04c"
+  version "9.4.4"
+  resolved "https://registry.yarnpkg.com/nock/-/nock-9.4.4.tgz#d58a6d54ca26735d792aa776801cd0623789bdb6"
   dependencies:
     chai "^4.1.2"
     debug "^3.1.0"
