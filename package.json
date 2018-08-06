@@ -5,6 +5,17 @@
     "node": ">=8.0.0",
     "npm": ">=5.6.0"
   },
+  "author": {
+    "name": "Chlu",
+    "email": "info@chlu.io",
+    "url": "https://chlu.io"
+  },
+  "bugs": {
+    "url": "https://github.com/ChluNetwork/chlu-collector/issues"
+  },
+  "homepage": "https://github.com/ChluNetwork/chlu-collector/blob/master/README.md",
+  "repository": "https://github.com/ChluNetwork/chlu-collector.git",
+  "license": "MIT",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/bin.js",
@@ -14,9 +25,9 @@
     "chlu-service-node": "src/bin.js"
   },
   "dependencies": {
-    "chlu-ipfs-support": "ChluNetwork/chlu-ipfs-support#misc-features",
+    "chlu-ipfs-support": "ChluNetwork/chlu-ipfs-support#semver:~0.1.0",
     "commander": "^2.15.1",
-    "libp2p-websocket-star-rendezvous": "^0.2.3",
+    "libp2p-websocket-star-rendezvous": "~0.2.3",
     "lodash": "^4.17.5"
   },
   "devDependencies": {
@@ -61,7 +72,5 @@
       "no-lone-blocks": 0
     },
     "globals": {}
-  },
-  "repository": "git@github.com:ChluNetwork/chlu-collector.git",
-  "license": "MIT"
+  }
 }
