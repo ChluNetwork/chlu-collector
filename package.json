@@ -25,7 +25,7 @@
     "chlu-service-node": "src/bin.js"
   },
   "dependencies": {
-    "chlu-ipfs-support": "ChluNetwork/chlu-ipfs-support#semver:~0.1.0",
+    "chlu-ipfs-support": "ChluNetwork/chlu-ipfs-support#semver:~0.2.0",
     "commander": "^2.15.1",
     "libp2p-websocket-star-rendezvous": "~0.2.3",
     "lodash": "^4.17.5"
