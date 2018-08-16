@@ -13,7 +13,7 @@ class ChluCollector {
         };
         this.didPinner = async didId => {
             try {
-                const multihash = await this.chluIpfs.orbitDb.getDID(didId)
+                const { multihash } = await this.chluIpfs.orbitDb.getDID(didId)
                 if (multihash) {
                     await this.pinner(multihash)
                 } else {
@@ -54,6 +54,7 @@ class ChluCollector {
         // Handle Chlu network messages
         this.chluIpfs.events.on('pubsub/message', this.handler);
         // Pin DIDs and public keys
+        this.chluIpfs.events.on('discover/did', this.didPinner);
         this.chluIpfs.events.on('discover/did/customer', this.didPinner);
         this.chluIpfs.events.on('discover/did/issuer', this.didPinner);
         this.chluIpfs.events.on('discover/did/vendor', this.didPinner);
@@ -98,6 +99,7 @@ class ChluCollector {
                 this.chluIpfs.logger.info('Validated and Pinned ReviewRecord ' + obj.multihash);
             } catch(exception){
                 this.chluIpfs.logger.error('Pinning failed due to Error: ' + exception.message);
+                console.log(exception)
             }
         }
     }
