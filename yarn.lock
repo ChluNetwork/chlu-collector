@@ -954,9 +954,9 @@ check-error@^1.0.1:
     elliptic "^6.4.0"
     js-sha3 "^0.7.0"
 
-"chlu-ipfs-support@ChluNetwork/chlu-ipfs-support#semver:~0.2.0":
-  version "0.2.0"
-  resolved "https://codeload.github.com/ChluNetwork/chlu-ipfs-support/tar.gz/85b430f63f73c1aad0c71df7b66191739a8003cb"
+"chlu-ipfs-support@ChluNetwork/chlu-ipfs-support#semver:~0.2.2":
+  version "0.2.2"
+  resolved "https://codeload.github.com/ChluNetwork/chlu-ipfs-support/tar.gz/6655264a6d06a9695434ad57d75a528879ea60be"
   dependencies:
     axios "^0.18.0"
     blockcypher ChluNetwork/node-client
@@ -966,7 +966,7 @@ check-error@^1.0.1:
     commander "^2.15.1"
     debounce-async "^0.0.1"
     elliptic "^6.4.0"
-    ipfs "~0.31.0"
+    ipfs "~0.31.7"
     ipfs-api "^22.3.0"
     lodash "^4.17.5"
     lru-cache "^4.1.2"
@@ -1601,6 +1601,10 @@ epimetheus@^1.0.55:
   resolved "https://registry.yarnpkg.com/epimetheus/-/epimetheus-1.0.55.tgz#8f47408b2d680b1226ffd205d501f8f7d5e29206"
   dependencies:
     prom-client "^10.0.0"
+
+err-code@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/err-code/-/err-code-1.1.2.tgz#06e0116d3028f6aef4806849eb0ea6a748ae6960"
 
 errno@~0.1.1, errno@~0.1.7:
   version "0.1.7"
@@ -2619,9 +2623,50 @@ ip@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
 
-ipfs-api@^22.2.4, ipfs-api@^22.3.0:
+ipfs-api@^22.3.0:
   version "22.3.0"
   resolved "https://registry.yarnpkg.com/ipfs-api/-/ipfs-api-22.3.0.tgz#29935c5d9ca533cefef62288e00a8b7eab412ab7"
+  dependencies:
+    async "^2.6.1"
+    big.js "^5.1.2"
+    bs58 "^4.0.1"
+    cids "~0.5.3"
+    concat-stream "^1.6.2"
+    debug "^3.1.0"
+    detect-node "^2.0.3"
+    flatmap "0.0.3"
+    glob "^7.1.2"
+    ipfs-block "~0.7.1"
+    ipfs-unixfs "~0.1.15"
+    ipld-dag-cbor "~0.12.1"
+    ipld-dag-pb "~0.14.6"
+    is-ipfs "~0.4.2"
+    is-pull-stream "0.0.0"
+    is-stream "^1.1.0"
+    libp2p-crypto "~0.13.0"
+    lru-cache "^4.1.3"
+    multiaddr "^5.0.0"
+    multibase "~0.4.0"
+    multihashes "~0.4.13"
+    ndjson "^1.5.0"
+    once "^1.4.0"
+    peer-id "~0.11.0"
+    peer-info "~0.14.1"
+    promisify-es6 "^1.0.3"
+    pull-defer "~0.2.2"
+    pull-pushable "^2.2.0"
+    pull-stream-to-stream "^1.3.4"
+    pump "^3.0.0"
+    qs "^6.5.2"
+    readable-stream "^2.3.6"
+    stream-http "^2.8.3"
+    stream-to-pull-stream "^1.7.2"
+    streamifier "~0.1.1"
+    tar-stream "^1.6.1"
+
+ipfs-api@^24.0.0:
+  version "24.0.1"
+  resolved "https://registry.yarnpkg.com/ipfs-api/-/ipfs-api-24.0.1.tgz#887a870cdf55550b93028181cd808adba20aa49b"
   dependencies:
     async "^2.6.1"
     big.js "^5.1.2"
@@ -2728,9 +2773,9 @@ ipfs-log@~4.1.0:
     p-map "^1.1.1"
     p-whilst "^1.0.0"
 
-ipfs-mfs@~0.2.3:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/ipfs-mfs/-/ipfs-mfs-0.2.5.tgz#d093c6d2dd5060b2ac29febe0dbae98bc2460ec8"
+ipfs-mfs@~0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/ipfs-mfs/-/ipfs-mfs-0.3.1.tgz#a3e37c1ae6420bcc46cde8cb364cc6424a5456e4"
   dependencies:
     async "^2.6.1"
     blob "~0.0.4"
@@ -2740,7 +2785,7 @@ ipfs-mfs@~0.2.3:
     filereader-stream "^2.0.0"
     interface-datastore "~0.4.2"
     ipfs-unixfs "~0.1.15"
-    ipfs-unixfs-engine "~0.31.3"
+    ipfs-unixfs-engine "~0.32.1"
     is-pull-stream "~0.0.0"
     is-stream "^1.1.0"
     joi "^13.4.0"
@@ -2749,6 +2794,7 @@ ipfs-mfs@~0.2.3:
     once "^1.4.0"
     promisify-es6 "^1.0.3"
     pull-cat "^1.1.11"
+    pull-defer "~0.2.2"
     pull-paramap "^1.2.2"
     pull-pushable "^2.2.0"
     pull-stream "^3.6.8"
@@ -2796,20 +2842,40 @@ ipfs-repo@~0.22.1:
     multiaddr "^4.0.0"
     pull-stream "^3.6.7"
 
-ipfs-unixfs-engine@~0.31.3:
-  version "0.31.3"
-  resolved "https://registry.yarnpkg.com/ipfs-unixfs-engine/-/ipfs-unixfs-engine-0.31.3.tgz#79e220395c3f30476cacfa481220623110b20429"
+ipfs-repo@~0.23.1:
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/ipfs-repo/-/ipfs-repo-0.23.1.tgz#9781d77d11174943240faa14f780e05eb925d774"
+  dependencies:
+    async "^2.6.0"
+    base32.js "~0.1.0"
+    big.js "^5.0.3"
+    cids "~0.5.3"
+    datastore-core "~0.4.0"
+    datastore-fs "~0.5.0"
+    datastore-level "~0.8.0"
+    debug "^3.1.0"
+    interface-datastore "~0.4.2"
+    ipfs-block "~0.7.1"
+    lock-me "^1.0.4"
+    lodash.get "^4.4.2"
+    lodash.has "^4.5.2"
+    lodash.set "^4.3.2"
+    multiaddr "^4.0.0"
+    pull-stream "^3.6.7"
+    sort-keys "^2.0.0"
+
+ipfs-unixfs-engine@~0.32.1:
+  version "0.32.3"
+  resolved "https://registry.yarnpkg.com/ipfs-unixfs-engine/-/ipfs-unixfs-engine-0.32.3.tgz#b3fd3eedcbd5a30c53bf0fd3d60917c1feef2a9b"
   dependencies:
     async "^2.6.1"
-    bs58 "^4.0.1"
     cids "~0.5.3"
     deep-extend "~0.6.0"
     ipfs-unixfs "~0.1.15"
-    ipld "~0.17.2"
-    ipld-dag-pb "~0.14.5"
+    ipld "~0.17.3"
+    ipld-dag-pb "~0.14.6"
     left-pad "^1.3.0"
     lodash "^4.17.10"
-    multihashes "~0.4.13"
     multihashing-async "~0.5.1"
     pull-batch "^1.0.0"
     pull-block "^1.4.0"
@@ -2823,6 +2889,9 @@ ipfs-unixfs-engine@~0.31.3:
     pull-traverse "^1.0.3"
     pull-write "^1.1.4"
     sparse-array "^1.3.1"
+    stream-to-pull-stream "^1.7.2"
+  optionalDependencies:
+    rabin "^1.6.0"
 
 ipfs-unixfs@^0.1.14, ipfs-unixfs@~0.1.15:
   version "0.1.15"
@@ -2830,9 +2899,9 @@ ipfs-unixfs@^0.1.14, ipfs-unixfs@~0.1.15:
   dependencies:
     protons "^1.0.0"
 
-ipfs@~0.31.0:
-  version "0.31.2"
-  resolved "https://registry.yarnpkg.com/ipfs/-/ipfs-0.31.2.tgz#d297122d23a379ebee0a65d0df7b9540ccb6445a"
+ipfs@~0.31.7:
+  version "0.31.7"
+  resolved "https://registry.yarnpkg.com/ipfs/-/ipfs-0.31.7.tgz#4383c263421da9e6020257e44aae3759f3fdc7f0"
   dependencies:
     "@nodeutils/defaults-deep" "^1.1.0"
     async "^2.6.1"
@@ -2844,6 +2913,7 @@ ipfs@~0.31.0:
     byteman "^1.3.5"
     cids "~0.5.3"
     debug "^3.1.0"
+    err-code "^1.1.2"
     file-type "^8.1.0"
     filesize "^3.6.1"
     fnv1a "^1.0.1"
@@ -2855,16 +2925,16 @@ ipfs@~0.31.0:
     hoek "^5.0.3"
     human-to-milliseconds "^1.0.0"
     interface-datastore "~0.4.2"
-    ipfs-api "^22.2.4"
+    ipfs-api "^24.0.0"
     ipfs-bitswap "~0.20.3"
     ipfs-block "~0.7.1"
     ipfs-block-service "~0.14.0"
     ipfs-http-response "~0.1.2"
-    ipfs-mfs "~0.2.3"
+    ipfs-mfs "~0.3.0"
     ipfs-multipart "~0.1.0"
-    ipfs-repo "~0.22.1"
+    ipfs-repo "~0.23.1"
     ipfs-unixfs "~0.1.15"
-    ipfs-unixfs-engine "~0.31.3"
+    ipfs-unixfs-engine "~0.32.1"
     ipld "~0.17.3"
     ipld-dag-cbor "~0.12.1"
     ipld-dag-pb "~0.14.6"
@@ -3010,7 +3080,7 @@ ipld-zcash@~0.1.4:
     multihashing-async "~0.5.1"
     zcash-bitcore-lib "~0.13.20-rc3"
 
-ipld@~0.17.2, ipld@~0.17.3:
+ipld@~0.17.3:
   version "0.17.3"
   resolved "https://registry.yarnpkg.com/ipld/-/ipld-0.17.3.tgz#ede5440a5b8469b1f0280502e21a5d83011d8630"
   dependencies:
@@ -3226,6 +3296,10 @@ is-path-inside@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-path-inside/-/is-path-inside-1.0.1.tgz#8ef5b7de50437a3fdca6b4e865ef7aa55cb48036"
   dependencies:
     path-is-inside "^1.0.1"
+
+is-plain-obj@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-1.1.0.tgz#71a50c8429dfca773c92a390a4a03b39fcd51d3e"
 
 is-plain-object@^2.0.1, is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
@@ -4871,7 +4945,7 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-nan@^2.10.0, nan@^2.2.1, nan@^2.9.2, nan@~2.10.0:
+nan@^2.1.0, nan@^2.10.0, nan@^2.2.1, nan@^2.9.2, nan@~2.10.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.10.0.tgz#96d0cd610ebd58d4b4de9cc0c6828cda99c7548f"
 
@@ -5611,6 +5685,26 @@ postgres-interval@^1.1.0:
   dependencies:
     xtend "^4.0.0"
 
+prebuild-install@^2.1.0:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-2.5.3.tgz#9f65f242782d370296353710e9bc843490c19f69"
+  dependencies:
+    detect-libc "^1.0.3"
+    expand-template "^1.0.2"
+    github-from-package "0.0.0"
+    minimist "^1.2.0"
+    mkdirp "^0.5.1"
+    node-abi "^2.2.0"
+    noop-logger "^0.1.1"
+    npmlog "^4.0.1"
+    os-homedir "^1.0.1"
+    pump "^2.0.1"
+    rc "^1.1.6"
+    simple-get "^2.7.0"
+    tar-fs "^1.13.0"
+    tunnel-agent "^0.6.0"
+    which-pm-runs "^1.0.0"
+
 prebuild-install@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-4.0.0.tgz#206ce8106ce5efa4b6cf062fc8a0a7d93c17f3a8"
@@ -5915,6 +6009,18 @@ qs@^6.5.1, qs@^6.5.2, qs@~6.5.1:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
 
+rabin@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/rabin/-/rabin-1.6.0.tgz#e05690b13056f08c80098e3ad71b90530038e355"
+  dependencies:
+    bindings "^1.2.1"
+    bl "^1.0.0"
+    debug "^2.2.0"
+    minimist "^1.2.0"
+    nan "^2.1.0"
+    prebuild-install "^2.1.0"
+    readable-stream "^2.0.4"
+
 randomatic@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-3.0.0.tgz#d35490030eb4f7578de292ce6dfb04a91a128923"
@@ -5992,7 +6098,7 @@ readable-stream@1.1.x, readable-stream@^1.0.33:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-readable-stream@2.3.6, readable-stream@^2.0.0, readable-stream@^2.0.5, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.0, readable-stream@^2.3.4, readable-stream@^2.3.5, readable-stream@^2.3.6, readable-stream@~2.3.5:
+readable-stream@2.3.6, readable-stream@^2.0.0, readable-stream@^2.0.4, readable-stream@^2.0.5, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.0, readable-stream@^2.3.4, readable-stream@^2.3.5, readable-stream@^2.3.6, readable-stream@~2.3.5:
   version "2.3.6"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"
   dependencies:
@@ -6508,6 +6614,12 @@ socket.io@^2.0.4, socket.io@^2.1.1:
     socket.io-adapter "~1.1.0"
     socket.io-client "2.1.1"
     socket.io-parser "~3.2.0"
+
+sort-keys@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/sort-keys/-/sort-keys-2.0.0.tgz#658535584861ec97d730d6cf41822e1f56684128"
+  dependencies:
+    is-plain-obj "^1.0.0"
 
 source-map-resolve@^0.5.0:
   version "0.5.2"
