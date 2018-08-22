@@ -1,5 +1,12 @@
 # Chlu Collector Changelog
 
+## v0.2.1
+
+- require ChluIPFS 0.2.2 for bug fixes
+- added unit tests
+- improved DID pinning
+- added OrbitDB oplog pinning
+
 ## v0.2.0
 
 - compatibility with ChluIPFS 0.2.0
