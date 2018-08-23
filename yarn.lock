@@ -954,9 +954,9 @@ check-error@^1.0.1:
     elliptic "^6.4.0"
     js-sha3 "^0.7.0"
 
-"chlu-ipfs-support@ChluNetwork/chlu-ipfs-support#semver:~0.2.2":
-  version "0.2.2"
-  resolved "https://codeload.github.com/ChluNetwork/chlu-ipfs-support/tar.gz/6655264a6d06a9695434ad57d75a528879ea60be"
+"chlu-ipfs-support@ChluNetwork/chlu-ipfs-support#semver:~0.2.3":
+  version "0.2.3"
+  resolved "https://codeload.github.com/ChluNetwork/chlu-ipfs-support/tar.gz/438367aa4532357390aa71a25c008012736d326c"
   dependencies:
     axios "^0.18.0"
     blockcypher ChluNetwork/node-client

@@ -37,7 +37,7 @@ class ChluCollector {
             try {
                 if (reviewRecord && reviewRecord.resolved && isEmpty(reviewRecord.errors)) {
                     this.chluIpfs.logger.debug('Pinning pre-validated ReviewRecord ' + multihash);
-                    await this.chluIpfs.pin(multihash)
+                    await this.pinner(multihash)
                     this.chluIpfs.logger.debug('Pinned pre-validated ReviewRecord ' + multihash);
                 } else {
                     // Read review record first. This caches the content, the history, and throws if it's not valid
@@ -54,7 +54,7 @@ class ChluCollector {
                         bitcoinTransactionHash: bitcoinTransactionHash
                     });
                     this.chluIpfs.logger.debug('Pinning validated ReviewRecord ' + multihash);
-                    await this.chluIpfs.pin(multihash);
+                    await this.pinner(multihash);
                     this.chluIpfs.logger.info('Validated and Pinned ReviewRecord data for ' + multihash);
                 }
             } catch(exception){
@@ -64,7 +64,11 @@ class ChluCollector {
         }
         this.pinner = async multihash => {
             try {
-                this.chluIpfs.pin(multihash);
+                if (await this.chluIpfs.isPinned(multihash)) {
+                    this.chluIpfs.logger.debug(`Content already Pinned: ${multihash}`);
+                } else {
+                    await this.chluIpfs.pin(multihash);
+                }
             } catch (error) {
                 this.chluIpfs.logger.error('Service Node Pinning failed due to Error: ' + error.message);
             }
