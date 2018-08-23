@@ -32,13 +32,17 @@ class ChluCollector {
                 this.chluIpfs.logger.error(`Could not Pin DID ${didId} due to Error: ${error.message}`)
             }
         }
-        this.reviewPinner = async (multihash, reviewRecord = null, bitcoinNetwork = null, bitcoinTransactionHash = null) => {
+        this.reviewPinner = async (multihash, reviewRecord = null, bitcoinNetwork = null, bitcoinTransactionHash = null, forcePin = false) => {
             this.chluIpfs.logger.info('Reading and Pinning ReviewRecord ' + multihash);
             try {
                 if (reviewRecord && reviewRecord.resolved && isEmpty(reviewRecord.errors)) {
                     this.chluIpfs.logger.debug('Pinning pre-validated ReviewRecord ' + multihash);
                     await this.pinner(multihash)
                     this.chluIpfs.logger.debug('Pinned pre-validated ReviewRecord ' + multihash);
+                    return true
+                } else if (!forcePin && await this.chluIpfs.isPinned(multihash)) {
+                    this.chluIpfs.logger.debug(`ReviewRecord ${multihash} has already been pinned`);
+                    return false
                 } else {
                     // Read review record first. This caches the content, the history, and throws if it's not valid
                     this.chluIpfs.logger.debug('Reading and validating ReviewRecord ' + multihash);
@@ -56,6 +60,7 @@ class ChluCollector {
                     this.chluIpfs.logger.debug('Pinning validated ReviewRecord ' + multihash);
                     await this.pinner(multihash);
                     this.chluIpfs.logger.info('Validated and Pinned ReviewRecord data for ' + multihash);
+                    return true
                 }
             } catch(exception){
                 this.chluIpfs.logger.error('Pinning failed due to Error: ' + exception.message);
@@ -121,7 +126,7 @@ class ChluCollector {
         let obj = message;
         // handle ReviewRecord: pin hash
         if (obj.type === this.chluIpfs.constants.eventTypes.wroteReviewRecord && typeof obj.multihash === 'string') {
-            await this.reviewPinner(obj.multihash, null, obj.bitcoinNetwork, obj.bitcoinTransactionHash)
+            await this.reviewPinner(obj.multihash, null, obj.bitcoinNetwork, obj.bitcoinTransactionHash, true)
         }
     }
 }
