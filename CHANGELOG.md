@@ -1,5 +1,9 @@
 # Chlu Collector Changelog
 
+## v0.2.3
+
+- update deps
+
 ## v0.2.2
 
 - don't fetch and pin data already pinned
